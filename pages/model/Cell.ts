@@ -8,6 +8,7 @@ export default class Cell {
 
 	active: boolean = false;
 	wall: boolean = false;
+	hover: boolean = false;
 
 	constructor(x: number, y: number) {
 		this.x = x;
@@ -29,6 +30,7 @@ export default class Cell {
 		let color = 'white';
 
 		if (this.active) color = 'turquoise';
+		if (this.hover) color = 'green';
 		if (this.wall) color = 'black';
 
 		return color;

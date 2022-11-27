@@ -38,11 +38,7 @@ a {
 
 .cell {
 	aspect-ratio: 1 / 1;
-	width: 3vh;
-}
-
-.cell:not(.wall):hover {
-	background-color: green;
+	width: 6vh;
 }
 
 .active {

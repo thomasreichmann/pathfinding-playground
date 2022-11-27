@@ -1,11 +1,9 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from '@emotion/react';
-import { Button, Card, Radio } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from '../styles/Home.module.scss';
 import Board from './model/Board';
-import Cell from './model/Cell';
 
 export default function Home() {
 	const [board, setBoard] = useState(new Board(15));
@@ -13,6 +11,16 @@ export default function Home() {
 	const handleClick = (index: number) => {
 		const cells = [...board.cells];
 		cells[index].active = !cells[index].active;
+
+		setBoard(prev => ({
+			...prev,
+			cells,
+		}));
+	};
+
+	const handleMouseHover = (index: number, hover: boolean) => {
+		const cells = [...board.cells];
+		cells[index].hover = hover;
 
 		setBoard(prev => ({
 			...prev,
@@ -31,6 +39,12 @@ export default function Home() {
 					`}
 					onClick={() => {
 						handleClick(i);
+					}}
+					onMouseEnter={() => {
+						handleMouseHover(i, true);
+					}}
+					onMouseLeave={() => {
+						handleMouseHover(i, false);
 					}}
 				/>
 			);
