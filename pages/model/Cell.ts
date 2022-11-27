@@ -1,3 +1,5 @@
+import { PhotoSizeSelectActual } from '@mui/icons-material';
+
 export default class Cell {
 	x: number;
 	y: number;
@@ -21,5 +23,14 @@ export default class Cell {
 		if (this.wall) name += ' wall';
 
 		return name;
+	}
+
+	getColor(): string {
+		let color = 'white';
+
+		if (this.active) color = 'turquoise';
+		if (this.wall) color = 'black';
+
+		return color;
 	}
 }

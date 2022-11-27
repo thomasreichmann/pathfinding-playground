@@ -5,41 +5,40 @@ import { Button, Card, Radio } from '@mui/material';
 import { useEffect, useState } from 'react';
 import styles from '../styles/Home.module.scss';
 import Board from './model/Board';
+import Cell from './model/Cell';
 
 export default function Home() {
-	const [pos, setPos] = useState(0);
 	const [board, setBoard] = useState(new Board(15));
 
-	useEffect(() => {
-		console.log(`pos changed to ${pos} re-rendering`);
-	}, [pos]);
+	const handleClick = (index: number) => {
+		const cells = [...board.cells];
+		cells[index].active = !cells[index].active;
 
-	const incrementPos = () => {
-		setPos(pos + 1);
-	};
-
-	const renderBlocks = (count: Number) => {
-		return (
-			<ul>
-				{[...Array(count)].map((_, i) => {
-					return <li key={i}>{i}</li>;
-				})}
-			</ul>
-		);
+		setBoard(prev => ({
+			...prev,
+			cells,
+		}));
 	};
 
 	const renderGrid = (board: Board) => {
 		return board.cells.map((cell, i) => {
-			return <div key={`${cell.x}${i}${cell.y}`} className={cell.getClassName()} />;
+			return (
+				<div
+					key={`${cell.x}${i}${cell.y}`}
+					className="cell"
+					css={css`
+						background-color: ${cell.getColor()};
+					`}
+					onClick={() => {
+						handleClick(i);
+					}}
+				/>
+			);
 		});
 	};
 
 	return (
 		<div className={styles.content}>
-			<Button variant="contained" onClick={incrementPos}>
-				+1
-			</Button>
-
 			<main
 				className={styles.board}
 				css={css`
