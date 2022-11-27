@@ -1,0 +1,59 @@
+html,
+body {
+	padding: 0;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+		Helvetica Neue, sans-serif;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+	html {
+		color-scheme: dark;
+	}
+	body {
+		height: 100vh;
+		color: #ffff;
+		background: #121212;
+	}
+	h1,
+	h2,
+	h3 {
+		opacity: 100%;
+	}
+
+	p,
+	span {
+		opacity: 87%;
+	}
+}
+
+.cell {
+	aspect-ratio: 1 / 1;
+	width: 3vh;
+	background-color: white;
+}
+
+.cell:not(.wall):hover {
+	background-color: green;
+}
+
+.active {
+	background-color: turquoise;
+}
+
+.visited {
+	background-color: purple;
+}
+
+.wall {
+	background-color: black;
+}

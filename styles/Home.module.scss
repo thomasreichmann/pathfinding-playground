@@ -1,0 +1,14 @@
+.content {
+	display: grid;
+	align-items: center;
+	justify-items: center;
+	margin: 1em;
+}
+
+.board {
+	// --grid-size: 10;
+	/* Start with 4x4 */
+	display: grid;
+	gap: 1px;
+	grid-template: repeat(var(--grid-size), 1fr) / repeat(var(--grid-size), 1fr);
+}
